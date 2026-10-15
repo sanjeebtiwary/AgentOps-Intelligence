@@ -1,0 +1,46 @@
+# Used by .github/workflows/labeler.yml (actions/labeler v6 syntax).
+# Labels are created automatically if they do not exist yet.
+
+core:
+  - changed-files:
+      - any-glob-to-any-file: "src/agentops/**"
+
+policy:
+  - changed-files:
+      - any-glob-to-any-file: "src/agentops/policy.py"
+
+verification:
+  - changed-files:
+      - any-glob-to-any-file: "src/agentops/verification.py"
+
+tools:
+  - changed-files:
+      - any-glob-to-any-file: ["src/agentops/tools.py", "src/agentops/registry.py"]
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file: "tests/**"
+
+benchmark:
+  - changed-files:
+      - any-glob-to-any-file: "benchmarks/**"
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: ["docs/**", "*.md"]
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file: [".github/workflows/**", ".pre-commit-config.yaml"]
+
+github-config:
+  - changed-files:
+      - any-glob-to-any-file: [".github/*.yml", ".github/CODEOWNERS", ".github/ISSUE_TEMPLATE/**", ".github/pull_request_template.md"]
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file: ["pyproject.toml", ".github/dependabot.yml"]
+
+security:
+  - changed-files:
+      - any-glob-to-any-file: ["SECURITY.md", "src/agentops/policy.py"]

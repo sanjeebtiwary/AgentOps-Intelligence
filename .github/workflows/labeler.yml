@@ -1,0 +1,20 @@
+name: Labeler
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+# pull_request_target runs with write access, so this workflow must NEVER check out
+# or execute code from the pull request. actions/labeler only reads the list of
+# changed files and the labeler.yml config from the base branch.
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/labeler@v6
+        with:
+          sync-labels: true

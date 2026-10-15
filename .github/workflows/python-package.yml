@@ -1,0 +1,60 @@
+name: Python package
+
+# Verifies that the project builds into a valid sdist/wheel and that the built
+# wheel works when installed on its own. Unit tests and lint live in ci.yml.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: package-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and install (${{ matrix.python-version }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Build sdist and wheel
+        run: |
+          python -m pip install --upgrade pip build twine
+          python -m build
+          twine check --strict dist/*
+
+      - name: Install the built wheel in a clean environment and smoke test it
+        run: |
+          python -m venv /tmp/wheel-env
+          /tmp/wheel-env/bin/pip install dist/*.whl
+          cd /tmp  # run outside the checkout so the source tree cannot shadow the wheel
+          /tmp/wheel-env/bin/python - <<'PY'
+          from agentops import (ExecutionEngine, PolicyEngine, Status, ToolRequest,
+                                build_default_registry, default_verifier)
+
+          engine = ExecutionEngine(build_default_registry(), PolicyEngine(), default_verifier())
+          assert engine.execute(ToolRequest("add", {"a": 2, "b": 3})).result == 5
+          assert engine.execute(ToolRequest("add", {"a": 10**12, "b": 1})).status is Status.POLICY_DENIED
+          assert engine.execute(ToolRequest("nope", {})).status is Status.UNKNOWN_TOOL
+          print("wheel smoke test passed")
+          PY
+
+      - name: Upload distributions
+        if: matrix.python-version == '3.12'
+        uses: actions/upload-artifact@v6
+        with:
+          name: dist
+          path: dist/
