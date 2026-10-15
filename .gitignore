@@ -1,4 +1,4 @@
-﻿__pycache__/
+__pycache__/
 *.py[cod]
 .venv/
 venv/
@@ -27,3 +27,7 @@ Thumbs.db
 *.db
 .ipynb_checkpoints/
 .langgraph_api/
+
+# Benchmark outputs
+benchmarks/results/
+benchmark-results.json
