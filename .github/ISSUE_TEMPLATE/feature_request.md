@@ -1,4 +1,4 @@
-﻿---
+---
 name: Feature request
 about: Propose a new tool, policy rule, verification check, benchmark case or other improvement
 title: "[Feature] "

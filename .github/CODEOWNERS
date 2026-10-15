@@ -1,4 +1,20 @@
-﻿# Replace with your GitHub username before enabling CODEOWNERS rules.
-# * @YOUR-GITHUB-USERNAME
-# /src/ @YOUR-GITHUB-USERNAME
-# /docs/ @YOUR-GITHUB-USERNAME
+# Code owners are automatically requested for review on pull requests.
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# The last matching pattern takes precedence.
+
+# Default owner for everything
+*                               @sanjeebtiwary
+
+# Control points: policy enforcement, verification, execution path, tool registry
+/src/agentops/policy.py         @sanjeebtiwary
+/src/agentops/verification.py   @sanjeebtiwary
+/src/agentops/engine.py         @sanjeebtiwary
+/src/agentops/registry.py       @sanjeebtiwary
+
+# Benchmark logic affects the comparability of reported results
+/benchmarks/                    @sanjeebtiwary
+
+# Docs, repository configuration and security policy
+/docs/                          @sanjeebtiwary
+/.github/                       @sanjeebtiwary
+/SECURITY.md                    @sanjeebtiwary

@@ -1,4 +1,4 @@
-﻿---
+---
 name: Bug report
 about: Report incorrect behavior in execution, policy, verification, tools or the benchmark
 title: "[Bug] "
