@@ -1,4 +1,4 @@
-# AgentOps Intelligence
+                                                                                                                                                                                   # AgentOps Intelligence
 
 **A research-oriented framework for reliable tool-using AI agents.**
 
