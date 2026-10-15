@@ -1,74 +1,29 @@
-# gitignore template for LangChain products, e.g., LangGraph, LangSmith
-# website: https://www.langchain.com/
-# website: https://www.langchain.com/langgraph
-
-# LangGraph
-.langgraph_api/
-# Python cache and compiled files
-__pycache__/
+﻿__pycache__/
 *.py[cod]
-*$py.class
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-.coverage.*
-htmlcov/
-
-# Virtual environments
 .venv/
 venv/
-env/
-ENV/
-
-# Packaging and build artifacts
-build/
-dist/
-*.egg-info/
-.eggs/
-wheels/
-
-# Environment variables and secrets
 .env
 .env.*
 !.env.example
-secrets/
-credentials/
 *.pem
 *.key
-*.token
-
-# IDEs and editors
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.pyright/
+.ruff_cache/
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
-
-# Operating system files
 .DS_Store
 Thumbs.db
-Desktop.ini
-
-# Logs and temporary files
 *.log
-logs/
-tmp/
-temp/
-
-# Local databases and runtime state
+*.tmp
 *.sqlite
 *.sqlite3
 *.db
-*.pid
-
-# Jupyter
 .ipynb_checkpoints/
-
-# LangGraph local runtime
 .langgraph_api/
-
-# Keep benchmark results versioned by default.
-# Uncomment these if you don't want generated reports committed:
-# reports/*.csv
-# reports/*.json
