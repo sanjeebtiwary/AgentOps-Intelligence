@@ -109,7 +109,7 @@ These tools provide a controlled environment for testing the execution and verif
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR-GITHUB-REPOSITORY-URL>
+git clone (https://github.com/sanjeebtiwary/AgentOps-Intelligence?tab=readme-ov-file)
 cd agentops-intelligence
 ```
 
