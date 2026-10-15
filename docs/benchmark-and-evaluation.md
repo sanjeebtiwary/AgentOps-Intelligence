@@ -30,6 +30,12 @@ The stricter configuration also reported two verification failures.
 
 These figures are preliminary observations from a small synthetic dataset. They should not be treated as statistically significant findings or generalized to real-world AI agents.
 
+### Results from the dataset in this repository
+
+`benchmarks/cases.py` (`synthetic-v1`, 14 cases) is run by `benchmarks/run_benchmark.py` across four configurations (baseline, policy only, verification only, policy + verification). Metric denominators are defined in `benchmarks/metrics.py`. Task success rate here means "the request ended in `SUCCESS`" (a result was returned and, if verification is on, accepted); the separate *silent error rate* counts accepted results that differ from ground truth.
+
+The ground truth and the verifier were written together on a tiny dataset, so 100% expected-outcome accuracy for the full configuration is largely by construction. The numbers above in this section come from an earlier run and will not match this dataset exactly.
+
 ## 4. Why metrics differ
 
 Expected-outcome accuracy and task success rate measure different properties.
