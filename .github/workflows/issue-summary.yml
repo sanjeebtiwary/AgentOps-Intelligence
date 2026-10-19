@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Summarize the issue
         id: inference
-        uses: actions/ai-inference@v1
+        uses: actions/ai-inference@v3
         with:
           system-prompt: |
             You help maintainers of AgentOps Intelligence, a Python research prototype for policy
